@@ -1,4 +1,8 @@
+import 'dart:collection';
+
 import 'package:flutter/material.dart';
+import 'quote.dart';
+
 void main() {
   runApp(const MaterialApp(
     home:QuoteList()
@@ -14,11 +18,12 @@ class QuoteList extends StatefulWidget {
 
 class _QuoteListState extends State<QuoteList> {
 
-  List<String> quotes = [
-    'Hey all, in this Flutter tutorial',
-    ' I will show you how we can cycle through lists of data and output',
-    'that data in our widget tree using the map method.'
+  List<Quote> quotes = [
+    Quote(author:'osca wilde',text:'by youself'),
+    Quote(author:'osca wilde',text:'by youself'),
+    Quote(author:'bruce li',text:'by youself')
   ];
+
 
   @override
   Widget build(BuildContext context) {
@@ -30,9 +35,7 @@ class _QuoteListState extends State<QuoteList> {
         backgroundColor: Colors.redAccent,
       ),
       body: Column(
-        children: quotes.map((quote) {
-          return Text(quote);
-        }).toList(),
+        children: quotes.map((quote) => Text("${quote.author} ${quote.text}")).toList(),
       ),
     );
   }
